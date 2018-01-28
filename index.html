@@ -8,6 +8,12 @@
     <script src="lib/depthkit.min.js"></script>
     <script>
 
+        fetch('./data/building.json')
+        .then(resp => resp.json())
+        .then(buildingJson => {
+            console.log(buildingJson);
+        });
+
         var invert = !(Math.random() > .5);
         var bgColor = (invert) ? "hsl(" + Math.floor(Math.random() * 360) + ", 5%, 85%)" : "hsl(" + Math.floor(Math.random() * 360) + ", 45%, 30%)";
         var strokeColor = (!invert) ? "hsl(" + Math.floor(Math.random() * 360) + ", 5%, 85%)" : "hsl(" + Math.floor(Math.random() * 360) + ", 45%, 30%)";
