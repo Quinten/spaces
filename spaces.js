@@ -1,7 +1,5 @@
 window.onload = function () {
 
-    console.log('window load');
-
     fetch('./data/building.json')
     .then(resp => resp.json())
     .then(buildingJson => {
@@ -66,4 +64,11 @@ window.onload = function () {
     engine.scene.addChild(createBuilding(0, 12));
 
     engine.renderer.render();
+
+    window.addEventListener('resize', (e) => {
+        engine.viewport.fillPage();
+        engine.renderer.render();
+    });
+
+
 }
