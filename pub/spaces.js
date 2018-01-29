@@ -1,8 +1,11 @@
-import {viewport} from './lib/viewport.js';
+import {Viewport} from './lib/Viewport.js';
+import {Quad} from './lib/Quad.js';
 
 window.onload = () => {
 
-    let view = viewport();
+    let viewport = Viewport();
+
+    console.log(Quad());
 
     /*
     var invert = !(Math.random() > .5);
