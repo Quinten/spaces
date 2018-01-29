@@ -1,12 +1,16 @@
-import {quad} from './lib/quad.js';
+import {viewport} from './lib/viewport.js';
 
 window.onload = () => {
 
-    console.log(quad());
+    let view = viewport();
 
+    /*
     var invert = !(Math.random() > .5);
     var bgColor = (invert) ? "hsl(" + Math.floor(Math.random() * 360) + ", 5%, 85%)" : "hsl(" + Math.floor(Math.random() * 360) + ", 45%, 30%)";
     var strokeColor = (!invert) ? "hsl(" + Math.floor(Math.random() * 360) + ", 5%, 85%)" : "hsl(" + Math.floor(Math.random() * 360) + ", 45%, 30%)";
+    */
+
+    /*
 
     var engine = new DK.Engine();
     engine.viewport.fillPage();
@@ -44,10 +48,13 @@ window.onload = () => {
         }
         return building;
     }
+    */
 
     fetch('./data/building.json')
     .then(resp => resp.json())
     .then(buildingJson => {
+        console.log(buildingJson);
+        /*
         engine.scene.addChild(createBuilding(buildingJson));
         engine.camera.x = 3.5 * gridSize;
         engine.camera.y = ceilingHeight / 4;
@@ -55,6 +62,7 @@ window.onload = () => {
         engine.camera.z = 2 * gridSize;
         engine.camera.z = -1;
         engine.start();
+        */
     });
 
 }
