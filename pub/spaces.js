@@ -1,4 +1,8 @@
+import {quad} from './lib/quad.js';
+
 window.onload = () => {
+
+    console.log(quad());
 
     var invert = !(Math.random() > .5);
     var bgColor = (invert) ? "hsl(" + Math.floor(Math.random() * 360) + ", 5%, 85%)" : "hsl(" + Math.floor(Math.random() * 360) + ", 45%, 30%)";
