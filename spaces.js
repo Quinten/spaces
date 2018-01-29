@@ -1,11 +1,9 @@
-import {Viewport} from './lib/Viewport.js';
+import {Engine} from './lib/Engine.js';
 import {Quad} from './lib/Quad.js';
 
 window.onload = () => {
 
-    let viewport = Viewport();
-
-    console.log(Quad());
+    console.log(Quad({}));
 
     /*
     var invert = !(Math.random() > .5);
@@ -66,6 +64,12 @@ window.onload = () => {
         engine.camera.z = -1;
         engine.start();
         */
+
+        let engine = Engine();
+        console.log(engine);
+
+        engine.start();
+
     });
 
 }
