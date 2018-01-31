@@ -65,11 +65,13 @@ window.onload = () => {
         engine.start();
         */
 
-        let engine = Engine();
+        let engine = window.engine = Engine();
 
         engine.scene = buildingJson.doors.map( door => Quad(door) );
 
         console.log(engine);
+
+        engine.camera.z = -10;
 
         engine.start();
 
