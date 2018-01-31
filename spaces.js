@@ -3,7 +3,7 @@ import {Quad} from './lib/Quad.js';
 
 window.onload = () => {
 
-    console.log(Quad({}));
+    //console.log(Quad({}));
 
     /*
     var invert = !(Math.random() > .5);
@@ -66,6 +66,9 @@ window.onload = () => {
         */
 
         let engine = Engine();
+
+        engine.scene = buildingJson.doors.map( door => Quad(door) );
+
         console.log(engine);
 
         engine.start();
