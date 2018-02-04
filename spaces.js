@@ -11,7 +11,8 @@ window.onload = () => {
 
         engine.scene = buildingJson.doors.map( door => Quad(door) );
 
-        engine.camera.z = -10;
+        engine.camera.x = 2.5;
+        engine.camera.z = 2.5;
 
         engine.start();
 
