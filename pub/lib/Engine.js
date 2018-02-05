@@ -19,12 +19,15 @@ export function Engine() {
                 window.requestAnimationFrame(onF, this.viewport.canvas);
                 this.viewport.context.clearRect(0, 0, this.viewport.canvas.width, this.viewport.canvas.height);
                 this.renderer.render(this.viewport, this.scene, this.camera);
+                this.step(this.camera);
             }
             onF();
 
         },
         step: function (obj) {
-            console.log('step');
+            if (obj.step &&  typeof obj.step === 'function') {
+                obj.step();
+            }
         }
     };
 
