@@ -23,3 +23,7 @@ node server.js
 ```
 
 And open http://localhost:4567/ in your browser.
+
+### License
+
+MIT license
