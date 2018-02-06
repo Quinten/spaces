@@ -8,6 +8,8 @@ window.onload = () => {
     .then(buildingJson => {
 
         let engine = window.engine = Engine();
+        let hue = Math.floor(Math.random() * 360);
+        let hueStep = 180 + Math.floor(360 / buildingJson.doors.length);
 
         engine.scene = buildingJson.doors.map( door => {
             let quad = Quad(door);
@@ -16,8 +18,15 @@ window.onload = () => {
                     engine.viewport.canvas.style.background = this.color;
                 }
             };
+            hue += hueStep;
+            if (hue >= 360) {
+                hue -= 360;
+            }
+            quad.color = `hsl(${hue}, 45%, 65%)`;
             return quad;
         });
+
+        engine.viewport.canvas.style.background = `hsl(${hue}, 45%, 65%)`;
 
         let waypoints = buildingJson.waypoints;
         let w = 0;
