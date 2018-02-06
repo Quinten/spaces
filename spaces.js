@@ -27,7 +27,7 @@ window.onload = () => {
         engine.camera.step = function () {
             engine.camera.x += (to.x - from.x) / 240;
             engine.camera.z += (to.z - from.z) / 240;
-            engine.camera.rotationY += (angle - engine.camera.rotationY) / 6;
+            engine.camera.rotationY += (angle - engine.camera.rotationY) / 20;
             if (Math.abs(to.x - engine.camera.x) < .1 && Math.abs(to.z - engine.camera.z) < .1) {
                 w++;
                 if (w >= waypoints.length) {
@@ -35,8 +35,14 @@ window.onload = () => {
                 }
                 from = to;
                 to = waypoints[w];
-                angle = Math.atan2(to.x - from.x, to.z - from.z) * 180 / Math.PI;
-                console.log(angle);
+                let newAngle = Math.atan2(to.x - from.x, to.z - from.z) * 180 / Math.PI;
+                if ((newAngle - angle) < -180) {
+                    engine.camera.rotationY -= 360;
+                }
+                if ((newAngle - angle) > 180) {
+                    engine.camera.rotationY += 360;
+                }
+                angle = newAngle;
             }
         };
 
