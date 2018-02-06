@@ -9,7 +9,15 @@ window.onload = () => {
 
         let engine = window.engine = Engine();
 
-        engine.scene = buildingJson.doors.map( door => Quad(door) );
+        engine.scene = buildingJson.doors.map( door => {
+            let quad = Quad(door);
+            quad.step = function () {
+                if (!this.isBehindCamera() && this.a.px < 0 && this.d.px > engine.viewport.canvas.width) {
+                    engine.viewport.canvas.style.background = this.color;
+                }
+            };
+            return quad;
+        });
 
         let waypoints = buildingJson.waypoints;
         let w = 0;

@@ -20,11 +20,19 @@ export function Engine() {
                 this.viewport.context.clearRect(0, 0, this.viewport.canvas.width, this.viewport.canvas.height);
                 this.renderer.render(this.viewport, this.scene, this.camera);
                 this.step(this.camera);
+                this.step(this.scene);
             }
             onF();
 
         },
         step: function (obj) {
+            if (obj instanceof Array) {
+                for (let child of obj) {
+                    if (child.step &&  typeof child.step === 'function') {
+                        child.step();
+                    }
+                }
+            }
             if (obj.step &&  typeof obj.step === 'function') {
                 obj.step();
             }
