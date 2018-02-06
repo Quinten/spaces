@@ -25,10 +25,12 @@ window.onload = () => {
         engine.camera.rotationY = angle;
 
         engine.camera.step = function () {
-            engine.camera.x += (to.x - from.x) / 240;
-            engine.camera.z += (to.z - from.z) / 240;
-            engine.camera.rotationY += (angle - engine.camera.rotationY) / 20;
-            if (Math.abs(to.x - engine.camera.x) < .1 && Math.abs(to.z - engine.camera.z) < .1) {
+            //engine.camera.x += (to.x - from.x) / 240;
+            //engine.camera.z += (to.z - from.z) / 240;
+            engine.camera.rotationY += (angle - engine.camera.rotationY) / 30;
+            engine.camera.x += Math.sin(engine.camera.rotationY * Math.PI / 180) / 120;
+            engine.camera.z += Math.cos(engine.camera.rotationY * Math.PI / 180) / 120;
+            if (Math.abs(to.x - engine.camera.x) < .25 && Math.abs(to.z - engine.camera.z) < .25) {
                 w++;
                 if (w >= waypoints.length) {
                     w = 0;
