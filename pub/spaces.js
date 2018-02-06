@@ -35,15 +35,11 @@ window.onload = () => {
         let to = waypoints[w];
         let angle = Math.atan2(to.x - from.x, to.z - from.z) * 180 / Math.PI;
 
-        console.log(angle);
-
         engine.camera.x = from.x;
         engine.camera.z = from.z;
         engine.camera.rotationY = angle;
 
         engine.camera.step = function () {
-            //engine.camera.x += (to.x - from.x) / 240;
-            //engine.camera.z += (to.z - from.z) / 240;
             engine.camera.rotationY += (angle - engine.camera.rotationY) / 30;
             engine.camera.x += Math.sin(engine.camera.rotationY * Math.PI / 180) / 120;
             engine.camera.z += Math.cos(engine.camera.rotationY * Math.PI / 180) / 120;
